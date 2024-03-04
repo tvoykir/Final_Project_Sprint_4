@@ -50,11 +50,6 @@ public class OrderPageTest {
 
     @Before
     public void openPage() {
-       // driver = new ChromeDriver();
-       // driver.get("https://qa-scooter.praktikum-services.ru/");
-       // WebDriverManager.firefoxdriver().setup();
-       // driver = new FirefoxDriver();
-       // driver.get("https://qa-scooter.praktikum-services.ru/");
         if (browserType.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
