@@ -2,6 +2,7 @@ package Scooter;
 
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class MainPageTest {
         this.browserType = browserType;
         this.index = index;
         this.expected = expected;
+
     }
 
     @Parameterized.Parameters
@@ -54,10 +56,8 @@ public class MainPageTest {
 
         };
     }
-
-
-    @Test
-    public void checkContentOfFirstFaqItem() {
+    @Before
+    public void openPage() {
         if (browserType.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
@@ -70,8 +70,8 @@ public class MainPageTest {
         driver.get("https://qa-scooter.praktikum-services.ru/");
     }
 
-    private void testFaqItemContent(WebDriver driver) {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+    @Test
+    public void testFaqItemContent() {
         MainPage objMainPage = new MainPage(driver);
         objMainPage.scrollToFAQ();
         List<WebElement> elements = driver.findElements(objMainPage.pathAccordionItems);
